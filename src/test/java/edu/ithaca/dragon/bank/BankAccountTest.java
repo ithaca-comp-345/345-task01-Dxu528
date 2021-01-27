@@ -24,11 +24,17 @@ class BankAccountTest {
 
     @Test
     void isEmailValidTest(){
+        //Default correct case
         assertTrue(BankAccount.isEmailValid("a@b.com"));
+        //Class - no characters betwee @ and . boundry case
         assertFalse(BankAccount.isEmailValid("a@.com"));
+        //Class - nothing infront boundry case
         assertFalse(BankAccount.isEmailValid("@b.com"));
+        //no . boundry case
         assertFalse(BankAccount.isEmailValid("@"));
+        // class no @ no text boundry case
         assertFalse(BankAccount.isEmailValid(".com"));
+        //Blank Boundry case
         assertFalse(BankAccount.isEmailValid(""));
     }
 
