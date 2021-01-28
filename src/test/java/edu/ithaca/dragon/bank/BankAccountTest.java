@@ -23,8 +23,8 @@ class BankAccountTest {
         assertThrows(InsufficientFundsException.class, () -> bankAccount.withdraw(300));
         // withdraw so balance goes to 0
         bankAccount.withdraw(100);
-        assertEquals(100, bankAccount.getBalance());
-        // withdraw when blance is 0
+        assertEquals(0, bankAccount.getBalance());
+        // withdraw when balance is 0
         assertThrows(InsufficientFundsException.class, () -> bankAccount.withdraw(100));
         // withdraw negative amount
         assertThrows(InsufficientFundsException.class, () -> bankAccount.withdraw(-100));

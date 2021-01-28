@@ -30,6 +30,9 @@ public class BankAccount {
      * @post reduces the balance by amount if amount is non-negative and smaller than balance
      */
     public void withdraw (double amount) throws InsufficientFundsException{
+        if (amount <= 0){
+            throw new InsufficientFundsException("Not enough money");
+        }
         if (amount <= balance){
             balance -= amount;
         }
@@ -47,6 +50,9 @@ public class BankAccount {
             return false;
         }
         if (email.indexOf('.')==-1){
+            return false;
+        }
+        if (email.length()-email.indexOf('.')<2){
             return false;
         }
         if (email.indexOf('.')-email.indexOf('@')==1){
