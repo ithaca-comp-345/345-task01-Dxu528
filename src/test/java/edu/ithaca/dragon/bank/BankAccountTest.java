@@ -16,10 +16,18 @@ class BankAccountTest {
     @Test
     void withdrawTest() throws InsufficientFundsException{
         BankAccount bankAccount = new BankAccount("a@b.com", 200);
+        // Withdraw within balance
         bankAccount.withdraw(100);
-
         assertEquals(100, bankAccount.getBalance());
+        // withdraw with insufficient balance
         assertThrows(InsufficientFundsException.class, () -> bankAccount.withdraw(300));
+        // withdraw so balance goes to 0
+        bankAccount.withdraw(100);
+        assertEquals(100, bankAccount.getBalance());
+        // withdraw when blance is 0
+        assertThrows(InsufficientFundsException.class, () -> bankAccount.withdraw(100));
+        // withdraw negative amount
+        assertThrows(InsufficientFundsException.class, () -> bankAccount.withdraw(-100));
     }
 
     @Test
@@ -34,7 +42,13 @@ class BankAccountTest {
         assertFalse(BankAccount.isEmailValid("@"));
         // class no @ no text boundry case
         assertFalse(BankAccount.isEmailValid(".com"));
-        //Blank Boundry case
+        //Class no text before or inbetween @ and . equilvalence case
+        assertFalse(BankAccount.isEmailValid("@.com"));
+        //No domain equivalence case
+        assertFalse(BankAccount.isEmailValid("a@b."));
+        //Once character domain boundary case
+        assertTrue(BankAccount.isEmailValid("a@b.c"));
+        //Blank equivalence case
         assertFalse(BankAccount.isEmailValid(""));
     }
 
