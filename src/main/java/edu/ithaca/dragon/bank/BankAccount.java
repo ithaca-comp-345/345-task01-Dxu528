@@ -62,4 +62,18 @@ public class BankAccount {
             return true;
         }
     }
+    /**
+     * Checks if the amount is a non-negative and has no more than two decimal places
+     */
+    public static boolean isAmountValid(Double amount){
+        if (amount < 0){
+            return false;
+        }
+        if ((amount*100)%(1) != 0){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
 }

@@ -68,4 +68,24 @@ class BankAccountTest {
         assertThrows(IllegalArgumentException.class, ()-> new BankAccount("", 100));
     }
 
+    @Test
+    void isAmountValidTest() {
+        //correct case
+        assertTrue(BankAccount.isAmountValid(1.99));
+        //non-negative border case
+        assertTrue(BankAccount.isAmountValid(1.0));
+        //negative border case
+        assertFalse(BankAccount.isAmountValid(-1.0));
+        //middle case
+        assertTrue(BankAccount.isAmountValid(0.0));
+        //two digit equivalence case
+        assertTrue(BankAccount.isAmountValid(10.0));
+        //two decimal place broder case
+        assertTrue(BankAccount.isAmountValid(2.99));
+        //over two decimal place border case
+        assertFalse(BankAccount.isAmountValid(1.999));
+        //negative and decimal equivalence case
+        assertFalse(BankAccount.isAmountValid(-2.99));
+    }
+
 }
