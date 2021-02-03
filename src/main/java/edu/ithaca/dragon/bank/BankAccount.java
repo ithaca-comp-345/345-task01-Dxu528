@@ -81,6 +81,11 @@ public class BankAccount {
      * Deposits certain amount into the balance
      */
     public void deposit(double amount) throws IllegalArgumentException{
-        //TODO
+        if (isAmountValid(amount)){
+            balance += amount;
+        }
+        else{
+            throw new IllegalArgumentException("Amount: " + amount + " is an invalid amount to deposit.");
+        }
     }
 }
