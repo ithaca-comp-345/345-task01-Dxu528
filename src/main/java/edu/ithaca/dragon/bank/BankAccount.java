@@ -99,6 +99,7 @@ public class BankAccount {
      * transfers a certain amount from one balance to another
      */
     public void transfer(double amount) throws InsufficientFundsException{
-        //TODO
+        withdraw(amount);
+        balance2 += amount;
     }
 }

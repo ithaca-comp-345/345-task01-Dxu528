@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class BankAccountTest {
 
     @Test
-    void getBalanceTest() {
+    void getBalanceTest() throws IllegalArgumentException{
         //positive bank balance
         BankAccount bankAccount1 = new BankAccount("a@b.com", 200);
         assertEquals(200, bankAccount1.getBalance());
@@ -15,8 +15,7 @@ class BankAccountTest {
         BankAccount bankAccount2 = new BankAccount("a@b.com", 0);
         assertEquals(0, bankAccount2.getBalance());
         //negative bank balance
-        BankAccount bankAccount3 = new BankAccount("a@b.com", -300);
-        assertEquals(-300, bankAccount3.getBalance());
+        assertThrows(IllegalArgumentException.class, ()-> new BankAccount("a@b.com", -300));
     }
 
     @Test
