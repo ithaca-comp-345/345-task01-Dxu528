@@ -65,7 +65,7 @@ public class BankAccount {
     /**
      * Checks if the amount is a non-negative and has no more than two decimal places
      */
-    public static boolean isAmountValid(Double amount){
+    public static boolean isAmountValid(double amount){
         if (amount < 0){
             return false;
         }
@@ -75,5 +75,12 @@ public class BankAccount {
         else{
             return true;
         }
+    }
+
+    /**
+     * Deposits certain amount into the balance
+     */
+    public void deposit(double amount) throws IllegalArgumentException{
+        //TODO
     }
 }

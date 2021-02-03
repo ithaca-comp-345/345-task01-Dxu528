@@ -101,4 +101,25 @@ class BankAccountTest {
         assertFalse(BankAccount.isAmountValid(-2.99));
     }
 
+    @Test
+    void depositTest() throws IllegalArgumentException{
+        BankAccount bankAccount = new BankAccount("a@b.com", 200);
+        //base case
+        bankAccount.deposit(100);
+        assertEquals(300, bankAccount.getBalance());
+        //deposit with deciaml places
+        bankAccount.deposit(1.99);
+        assertEquals(201.99, bankAccount.getBalance());
+        //deposit with zero value
+        bankAccount.deposit(0);
+        assertEquals(201.99, bankAccount.getBalance());
+        //negative value deposit
+        assertThrows(IllegalArgumentException.class, ()-> bankAccount.deposit(-100));
+        //more than two decimal places deposit
+        assertThrows(IllegalArgumentException.class, ()-> bankAccount.deposit(100.001));
+        //negative and more than two decimal place deposit
+        assertThrows(IllegalArgumentException.class, ()-> bankAccount.deposit(-100.001));
+        
+    }
+
 }
